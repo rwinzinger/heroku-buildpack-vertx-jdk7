@@ -46,6 +46,7 @@ if [ ! -d "$BUILD_DIR/.vertx" ]; then
   mv vert* .vertx
   #rm '.vertx/bin/vertx.bat'
   cd $BUILD_DIR
+  echo `ls`
   cp -r .vertx $CACHE_DIR/.vertx
   echo " done"
 fi
