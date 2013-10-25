@@ -15,6 +15,7 @@ EOF
 if [ ! -f $BUILD_DIR/Procfile ]; then
 cat <<EOF
 default_process_types:
-  web: vertx runmod vgt
+  web: vertx run com.senacor.hd13.PingVerticle
+  # web: vertx runmod vgt
 EOF
 fi
