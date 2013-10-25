@@ -42,6 +42,11 @@ VERTX_URL="http://dl.bintray.com/vertx/downloads/vert.x-2.0.1-final.tar.gz"
 if [ ! -d "$BUILD_DIR/.vertx" ]; then
   echo -n "-----> Installing Vert.x build (to .vertx)....."
   curl --max-time 320 --location $VERTX_URL | tar xz
+  echo "xxx"
+  echo `ls *`
+  echo "xxx"
+  echo `ls $BUILD_DIR/*`
+  echo "xxx"
   mv vert* .vertx
   rm '.vertx/bin/vertx.bat'
   cd $BUILD_DIR
