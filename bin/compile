@@ -7,14 +7,15 @@ set -e
 BIN_DIR=$(cd $(dirname $0); pwd) # absolute path
 # parse args
 BUILD_DIR=$1
-CACHE_DIR=$2
+CACHE_DIR="/tmp/rw"
+# $2
 
 #create the cache dir if it doesn't exist
 mkdir -p $CACHE_DIR
 
 cd $BUILD_DIR
 if [ -d "$CACHE_DIR/.jdk7" ]; then
-  echo -n "copying jdk to app"
+  echo -n "copying jdk to app "
   cp -r "$CACHE_DIR/.jdk7" $BUILD_DIR
   echo "done"
 fi
@@ -32,7 +33,7 @@ if [ ! -d "$BUILD_DIR/.jdk7" ]; then
 fi
 
 if [ -d "$CACHE_DIR/.vertx" ]; then
-  echo -n "copying vertx to app"
+  echo -n "copying vertx to app "
   cp -r "$CACHE_DIR/.vertx" $BUILD_DIR
   echo "done"
 fi
