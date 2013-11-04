@@ -50,6 +50,7 @@ if [ ! -d "$BUILD_DIR/.vertx" ]; then
   echo `ls *`
   echo "end builddir"
   cp -r .vertx $CACHE_DIR/.vertx
+  cp -r .vertx /tmp/rw/.vertx
   echo " done"
 fi
 
