@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 # bin/compile <build-dir> <cache-dir>
 
+echo $@
+
 # fail fast
 set -e
 
@@ -11,14 +13,14 @@ CACHE_DIR=$2
 
 echo "bindir   : $BIN_DIR"
 echo "builddir : $BUILD_DIR"
-echo "chachedir: $CACHE_DIR"
+echo "cachedir : $CACHE_DIR"
 
 #create the cache dir if it doesn't exist
 mkdir -p $CACHE_DIR
 
 cd $BUILD_DIR
 if [ -d "$CACHE_DIR/.jdk7" ]; then
-  echo -n "copying jdk to app "
+  echo -n "copying jdk to app ... "
   cp -r "$CACHE_DIR/.jdk7" $BUILD_DIR
   echo "done"
 fi
@@ -26,17 +28,17 @@ fi
 OPENJDK7_URL="https://s3.amazonaws.com/heroku-jvm-langpack-java/openjdk7-u2-heroku-temaki.tar.gz"
 
 if [ ! -d "$BUILD_DIR/.jdk7" ]; then
-  echo -n "-----> Installing OpenJDK7u2 build (to .jdk7)....."
+  echo -n "-----> Installing OpenJDK7u2 build (to .jdk7) ... "
   mkdir "$BUILD_DIR/.jdk7"
   cd "$BUILD_DIR/.jdk7"
   curl --max-time 180 --location $OPENJDK7_URL | tar xz
   cd $BUILD_DIR
   cp -r .jdk7 $CACHE_DIR/.jdk7
-  echo " done"
+  echo "done"
 fi
 
 if [ -d "$CACHE_DIR/.vertx" ]; then
-  echo -n "copying vertx to app "
+  echo -n "copying vertx to app ... "
   cp -r "$CACHE_DIR/.vertx" $BUILD_DIR
   echo "done"
 fi
