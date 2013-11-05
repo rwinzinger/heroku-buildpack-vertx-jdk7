@@ -7,8 +7,12 @@ set -e
 BIN_DIR=$(cd $(dirname $0); pwd) # absolute path
 # parse args
 BUILD_DIR=$1
-CACHE_DIR="/tmp/rw"
-# $2
+CACHE_DIR=$2
+
+echo "bindir   : $BIN_DIR"
+echo "builddir : $BUILD_DIR"
+echo "chachedir: $CACHE_DIR"
+
 
 #create the cache dir if it doesn't exist
 mkdir -p $CACHE_DIR
@@ -38,8 +42,6 @@ if [ -d "$CACHE_DIR/.vertx" ]; then
   echo "done"
 fi
 
-echo "builddir: $BUILD_DIR"
-echo "chachedir: $CACHE_DIR"
 
 VERTX_URL="http://dl.bintray.com/vertx/downloads/vert.x-2.0.1-final.tar.gz"
 
