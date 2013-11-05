@@ -13,7 +13,6 @@ echo "bindir   : $BIN_DIR"
 echo "builddir : $BUILD_DIR"
 echo "chachedir: $CACHE_DIR"
 
-
 #create the cache dir if it doesn't exist
 mkdir -p $CACHE_DIR
 
@@ -52,12 +51,31 @@ if [ ! -d "$BUILD_DIR/.vertx" ]; then
   mv vert* .vertx
   #rm '.vertx/bin/vertx.bat'
   cd $BUILD_DIR
-  echo "builddir:"
+  echo "+++ builddir:"
   echo `ls *`
-  echo "end builddir"
+  echo "+++ end builddir"
   cp -r .vertx $CACHE_DIR/.vertx
   echo " done"
 fi
+
+cd $BUILD_DIR
+echo "+++"
+echo "builddir:"
+echo `ls *`
+echo "end builddir"
+echo "+++"
+cd $BIN_DIR
+echo "+++"
+echo "bindir:"
+echo `ls *`
+echo "end bindir"
+echo "+++"
+cd $CACHE_DIR
+echo "+++"
+echo "chachedir:"
+echo `ls *`
+echo "end chachedir"
+echo "+++"
 
 cd $BUILD_DIR
 
